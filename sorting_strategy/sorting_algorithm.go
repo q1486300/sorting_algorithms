@@ -1,8 +1,6 @@
 package sorting_strategy
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type ISortingAlgorithm interface {
 	Sort([]int)
@@ -29,13 +27,7 @@ func (data *IntegerData) SetSortingAlgorithm(sortingBehavior ISortingAlgorithm) 
 }
 
 func (data *IntegerData) PrintArray() {
-	if data.arr == nil {
-		return
-	}
-	for i := 0; i < len(data.arr); i++ {
-		fmt.Printf("%d ", data.arr[i])
-	}
-	fmt.Println()
+	fmt.Println(data.arr)
 }
 
 func NewIntegerData(arr []int, sortingAlgorithm ISortingAlgorithm) *IntegerData {

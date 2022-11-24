@@ -1,7 +1,6 @@
 package comparator
 
 import (
-	"fmt"
 	"math"
 	"math/rand"
 	"sort"
@@ -160,14 +159,4 @@ func CopyArray(arr []int) []int {
 	res := make([]int, len(arr))
 	copy(res, arr)
 	return res
-}
-
-func PrintArray(arr []int) {
-	if arr == nil {
-		return
-	}
-	for i := 0; i < len(arr); i++ {
-		fmt.Printf("%d ", arr[i])
-	}
-	fmt.Println()
 }

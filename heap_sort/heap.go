@@ -26,7 +26,8 @@ func (m *MyMaxHeap) IsFull() bool {
 
 func (m *MyMaxHeap) Push(value int) {
 	if m.heapSize == m.limit {
-		fmt.Printf("heap is full, value:%d can't push into heap.", value)
+		fmt.Printf("heap is full, value:%d can't be pushed into heap.", value)
+		return
 	}
 	m.heap[m.heapSize] = value
 	m.heapInsert()

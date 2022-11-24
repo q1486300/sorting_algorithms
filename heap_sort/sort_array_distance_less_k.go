@@ -1,9 +1,6 @@
 package heap_sort
 
-import (
-	"container/heap"
-	"math"
-)
+import "container/heap"
 
 // 已知一個幾乎有序的陣列，幾乎有序是指: 如果把陣列排好順序的話，每個元素移動的距離不可以超過 K，並且 K 小於陣列的長度
 // 時間複雜度 O(N * logK); heap 內最多只有 K 個數，調整時時間複雜度 O(logK)
@@ -12,12 +9,11 @@ func SortedArrDistanceLessK(arr []int, k int) {
 		return
 	}
 	// 最小堆積樹
-	h := &IntHeap{}
-	heap.Init(h)
+	h := NewMinHeap()
 
 	index := 0
 	// 0..K-1
-	for ; index <= int(math.Min(float64(len(arr)-1), float64(k-1))); index++ {
+	for ; index <= min(len(arr)-1, k-1); index++ {
 		heap.Push(h, arr[index])
 	}
 
@@ -30,13 +26,27 @@ func SortedArrDistanceLessK(arr []int, k int) {
 	}
 
 	// index 遍歷完整個陣列後，把 heap 中剩下的數彈出依序放到 i 位置
-	for len(*h) != 0 {
+	for h.Len() != 0 {
 		arr[i] = heap.Pop(h).(int)
 		i++
 	}
 }
 
+func min(a, b int) int {
+	if a < b {
+		return a
+	} else {
+		return b
+	}
+}
+
 type IntHeap []int
+
+func NewMinHeap() *IntHeap {
+	h := &IntHeap{}
+	heap.Init(h)
+	return h
+}
 
 func (h IntHeap) Len() int {
 	return len(h)
@@ -50,14 +60,12 @@ func (h IntHeap) Swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 }
 
-func (h *IntHeap) Push(x interface{}) {
+func (h *IntHeap) Push(x any) {
 	*h = append(*h, x.(int))
 }
 
-func (h *IntHeap) Pop() interface{} {
-	old := *h
-	n := len(old)
-	x := old[n-1]
-	*h = old[0 : n-1]
-	return x
+func (h *IntHeap) Pop() any {
+	value := (*h)[len(*h)-1]
+	*h = (*h)[:len(*h)-1]
+	return value
 }

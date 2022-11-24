@@ -34,22 +34,20 @@ func (r *RadixSort) process(arr []int, L, R, digit int) {
 		// count[i] 目前位(d位)是(0~i)的數字有幾個
 		count := make([]int, radix)
 		for i := L; i <= R; i++ {
-			j := r.getDigit(arr[i], d)
-			count[j]++
+			digitValue := r.getDigit(arr[i], d)
+			count[digitValue]++
 		}
 		for i := 1; i < radix; i++ {
 			count[i] = count[i] + count[i-1]
 		}
 		for i := R; i >= L; i-- {
-			j := r.getDigit(arr[i], d)
-			help[count[j]-1] = arr[i]
-			count[j]--
+			digitValue := r.getDigit(arr[i], d)
+			help[count[digitValue]-1] = arr[i]
+			count[digitValue]--
 		}
 
-		j := 0
-		for i := L; i <= R; i++ {
-			arr[i] = help[j]
-			j++
+		for i, value := range help {
+			arr[L+i] = value
 		}
 	}
 }
@@ -58,7 +56,7 @@ func (r *RadixSort) process(arr []int, L, R, digit int) {
 func (r *RadixSort) maxBits(arr []int) int {
 	max := math.MinInt
 	for _, cur := range arr {
-		max = int(math.Max(float64(max), float64(cur)))
+		max = getMax(max, cur)
 	}
 	res := 0
 	for max != 0 {
@@ -68,6 +66,14 @@ func (r *RadixSort) maxBits(arr []int) int {
 	return res
 }
 
-func (r *RadixSort) getDigit(x int, d int) int {
-	return (x / int(math.Pow10(d-1))) % 10
+func (r *RadixSort) getDigit(value int, digit int) int {
+	return (value / int(math.Pow10(digit-1))) % 10
+}
+
+func getMax(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
 }

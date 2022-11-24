@@ -24,7 +24,7 @@ func TestSortedArrDistanceLessK(t *testing.T) {
 
 		if !assert.Equal(t, arr2, arr1) {
 			fmt.Printf("k = %d\n", k)
-			comparator.PrintArray(arr)
+			fmt.Println(arr)
 			break
 		}
 	}

@@ -18,7 +18,7 @@ func main() {
 
 	fmt.Println("------------------ Original array ------------------")
 	arr := comparator.GenerateRandomArray(maxSize, maxValue)
-	comparator.PrintArray(arr)
+	fmt.Println(arr)
 
 	fmt.Println("------------------ SelectionSort ------------------")
 	copyArr := comparator.CopyArray(arr)
