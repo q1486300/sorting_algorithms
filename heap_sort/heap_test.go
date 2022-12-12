@@ -8,7 +8,7 @@ import (
 )
 
 func TestMyMaxHeap(t *testing.T) {
-	testTime := 1000000
+	testTime := 500000
 	limit := 100
 	value := 1000
 

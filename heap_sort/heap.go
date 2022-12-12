@@ -25,12 +25,13 @@ func (m *MyMaxHeap) IsFull() bool {
 }
 
 func (m *MyMaxHeap) Push(value int) {
-	if m.heapSize == m.limit {
+	if m.IsFull() {
 		fmt.Printf("heap is full, value:%d can't be pushed into heap.", value)
 		return
 	}
 	m.heap[m.heapSize] = value
 	m.heapInsert()
+	m.heapSize++
 }
 
 func (m *MyMaxHeap) Pop() int {
@@ -47,7 +48,6 @@ func (m *MyMaxHeap) heapInsert() {
 		m.swap(index, (index-1)/2)
 		index = (index - 1) / 2
 	}
-	m.heapSize++
 }
 
 func (m *MyMaxHeap) heapify() {
@@ -71,7 +71,5 @@ func (m *MyMaxHeap) heapify() {
 }
 
 func (m *MyMaxHeap) swap(i, j int) {
-	tmp := m.heap[i]
-	m.heap[i] = m.heap[j]
-	m.heap[j] = tmp
+	m.heap[i], m.heap[j] = m.heap[j], m.heap[i]
 }
