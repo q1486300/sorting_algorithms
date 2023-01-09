@@ -22,11 +22,11 @@ func (r *RadixSort) Sort(arr []int) {
 }
 
 // arr[L..R] 排序，digit 表示最大值總共有幾位十進制數
-func (r *RadixSort) process(arr []int, L, R, digit int) {
+func (r *RadixSort) process(arr []int, L, R, bits int) {
 	const radix = 10
 	// 有多少個數就準備多少個輔助空間
 	help := make([]int, R-L+1)
-	for d := 1; d <= digit; d++ { // 有多少位數就進出桶幾次
+	for d := 1; d <= bits; d++ { // 有多少位數就進出桶幾次
 		// 10 個空間
 		// count[0] 目前位(d位)是0的數字有幾個
 		// count[1] 目前位(d位)是(0和1)的數字有幾個
@@ -38,7 +38,7 @@ func (r *RadixSort) process(arr []int, L, R, digit int) {
 			count[digitValue]++
 		}
 		for i := 1; i < radix; i++ {
-			count[i] = count[i] + count[i-1]
+			count[i] += count[i-1]
 		}
 		for i := R; i >= L; i-- {
 			digitValue := r.getDigit(arr[i], d)

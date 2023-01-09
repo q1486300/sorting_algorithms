@@ -28,7 +28,5 @@ func (s *SelectionSort) Sort(arr []int) {
 }
 
 func (s *SelectionSort) swap(arr []int, i int, j int) {
-	tmp := arr[i]
-	arr[i] = arr[j]
-	arr[j] = tmp
+	arr[i], arr[j] = arr[j], arr[i]
 }

@@ -23,7 +23,5 @@ func (data *InsertionSort) Sort(arr []int) {
 }
 
 func (data *InsertionSort) swap(arr []int, i, j int) {
-	tmp := arr[i]
-	arr[i] = arr[j]
-	arr[j] = tmp
+	arr[i], arr[j] = arr[j], arr[i]
 }

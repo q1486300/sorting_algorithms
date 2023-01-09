@@ -12,7 +12,7 @@ type QuickSort struct {
 
 var _ sorting_strategy.ISortingAlgorithm = &QuickSort{}
 
-func (q QuickSort) Sort(arr []int) {
+func (q *QuickSort) Sort(arr []int) {
 	if arr == nil || len(arr) < 2 {
 		return
 	}
@@ -20,26 +20,24 @@ func (q QuickSort) Sort(arr []int) {
 }
 
 // arr[L..R] 上，將隨機一個位置的數跟 arr[R] 交換，並以 arr[R] 位置的數做劃分值
-func (q QuickSort) process(arr []int, L, R int) {
+func (q *QuickSort) process(arr []int, L, R int) {
 	if L >= R {
 		return
 	}
-	q.swap(arr, L+(rand.Intn(R-L)+1), R)
+	q.swap(arr, L+rand.Intn(R-L+1), R)
 	equalLeft, equalRight := q.netherlandsFlag(arr, L, R)
 	q.process(arr, L, equalLeft-1)
 	q.process(arr, equalRight+1, R)
 }
 
-func (q QuickSort) swap(arr []int, i, j int) {
-	tmp := arr[i]
-	arr[i] = arr[j]
-	arr[j] = tmp
+func (q *QuickSort) swap(arr []int, i, j int) {
+	arr[i], arr[j] = arr[j], arr[i]
 }
 
 // 荷蘭國旗問題
 // <arr[R] 小於區域放左邊， ==arr[R] 等於區域放中間， >arr[R] 大於區域放右邊
 // 返回 ==arr[R] 左邊和右邊的索引
-func (q QuickSort) netherlandsFlag(arr []int, L, R int) (equalLeft, equalRight int) {
+func (q *QuickSort) netherlandsFlag(arr []int, L, R int) (equalLeft, equalRight int) {
 	if L > R {
 		return -1, -1
 	}

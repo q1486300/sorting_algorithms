@@ -1,16 +1,18 @@
 ## 目錄結構
 
-sorting_algorithms/<br/>
-├── binary_search &nbsp;&nbsp;&nbsp;&nbsp;二分搜尋相關內容<br/>
-├── bubble_sort &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;氣泡排序相關內容<br/>
-├── comparator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;對數器，產生隨機樣本提供測試使用<br/>
-├── heap_sort &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;堆排序相關內容<br/>
-├── insertion_sort &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;插入排序相關內容<br/>
-├── merge_sort &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合併排序相關內容<br/>
-├── quick_sort &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快速排序相關內容<br/>
-├── radix_sort &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基數排序相關內容<br/>
-├── selection_sort &nbsp;&nbsp;&nbsp;&nbsp;選擇排序相關內容<br/>
-└── sorting_strategy &nbsp;封裝排序資料和策略
+```shell
+sorting_algorithms/
+    ├── binary_search     二分搜尋相關內容
+    ├── bubble_sort       氣泡排序相關內容
+    ├── comparator        對數器，產生隨機樣本提供測試使用
+    ├── heap_sort         堆排序相關內容
+    ├── insertion_sort    插入排序相關內容
+    ├── merge_sort        合併排序相關內容
+    ├── quick_sort        快速排序相關內容
+    ├── radix_sort        基數排序相關內容
+    ├── selection_sort    選擇排序相關內容
+    └── sorting_strategy  封裝排序資料和策略
+```
 
 ## 排序演算法比較
 
